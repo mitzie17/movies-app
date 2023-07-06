@@ -1,6 +1,8 @@
 import React from 'react';
 import Stars from './Stars';
 import ReviewList from './ReviewList';
+import ReviewForm from './ReviewForm';
+
 
 export default class Movie extends React.Component {
 
@@ -22,6 +24,7 @@ export default class Movie extends React.Component {
                         <div className='body'>
                             <p>{movie.reviews}</p>
                             <p>{movie.stars}</p>
+                            <ReviewForm />
                         </div>
                     </div>    
                 ))}
