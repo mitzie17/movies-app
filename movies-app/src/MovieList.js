@@ -4,7 +4,7 @@ import Movie from './Movie';
 export default function MovieList() {
     let movies = [
         {'title': 'Pirates of the Caribbean',
-        'reviews': ['Good movie. Will recommend', ],
+        'reviews': ['Good movie. Will recommend'],
         'stars': '****'
         },
         {'title': 'Transformers',
