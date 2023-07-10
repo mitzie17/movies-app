@@ -10,9 +10,18 @@ export default class ReviewForm extends React.Component {
         }
       }
 
-    handleChange = (e) => {
-       if (this.props.onReviewSubmit) {
+    handleClick = (e) => {
+        e.preventDefault()
+        console.log(e)
+       if (this.props.onReviewSubmit && this.props.saveInput) {
+        this.setState((state, props) => {
+            return { movie: {
+                ...state.movie,
+                reviews: state.movie.reviews.push('some')
+            }}
+        })
         this.props.onReviewSubmit(e)
+        this.props.saveInput(e)
        }
 
     }
@@ -21,8 +30,8 @@ export default class ReviewForm extends React.Component {
         return (
             <div>
                 <form>
-                    <input type='textarea' placeholder='Add review...'></input>
-                    <button onChange={this.handleChange} className='btn btn-primary' type='submit'>Submit</button>
+                    <input type='textarea' value={this.saveInput} placeholder='Add review...'></input>
+                    <button onClick={this.handleClick} className='btn btn-primary' type='button'>Submit</button>
                 </form>
             </div>
         )

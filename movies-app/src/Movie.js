@@ -9,38 +9,38 @@ export default class Movie extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            movies: this.props.movies
+            movie: {...this.props.movie}
         }
         
     }
 
+    saveInput = (e) => {
+        this.setState({ input: e.target.value });
+        console.log(e.target.value)
+      };
+
+      addNewReview = () => {
+        this.setState(prevState => ({
+            
+          //reviews: [...prevState.movie.reviews, prevState.input],
+        }));
+      };
+
+
     handleReviewSubmit = (e) => {
         e.preventDefault()
-        this.setState((state, props) => {
-            state.movie.reviews.push(e.target.value)
-        })
-        console.log(e)
-        console.log('movie component')
+
     }
 
     render() {
 
-        const movies = this.state.movies
+        const movie = this.state.movie
 
         return (
-            <div className='container'>
-                {movies.map((movie, index) => (
-                    <div className='card' key={index}>
-                        <div className='card-header' key={index}>
-                            <h3 className='card-title'>{movie.title}</h3>
-                        </div>
-                        <div className='body'>
-                            <p>{movie.reviews}</p>
-                            <p>{movie.stars}</p>
-                            <ReviewForm movie={movie} onReviewSubmit= {this.handleReviewSubmit}/>
-                        </div>
-                    </div>    
-                ))}
+            <div className='body'>
+                <p>{movie.reviews}</p>
+                <p>{movie.stars}</p>
+                <ReviewForm movie={movie} onReviewSubmit= {this.addNewReview} saveInput={this.saveInput}/>
             </div>
         )
     }
