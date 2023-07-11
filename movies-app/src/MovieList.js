@@ -7,7 +7,7 @@ export default class MovieList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            movies: movies
+            movies: movies || []
         }  
     }
 

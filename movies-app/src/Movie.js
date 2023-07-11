@@ -14,21 +14,27 @@ export default class Movie extends React.Component {
         
     }
 
-    saveInput = (e) => {
-        this.setState({ input: e.target.value });
-        console.log(e.target.value)
-      };
+    
+    
+    
 
-      addNewReview = () => {
-        this.setState(prevState => ({
-            
-          //reviews: [...prevState.movie.reviews, prevState.input],
-        }));
-      };
+    //   addNewReview = () => {
+        
+    //     this.setState((state,props) => {
+    //         return { movie: { 
+    //           ...state.movie,
+    //           reviews: state.movie.reviews.push('some')
+    //         }};
+    //       });
+    //     }
 
-
-    handleReviewSubmit = (e) => {
-        e.preventDefault()
+    handleReviewSubmit = (review) => {
+        this.setState((state) => {
+                    return { movie: { 
+                      ...state.movie,
+                      reviews: [...state.movie.reviews, review]
+                    }};
+                  });
 
     }
 
@@ -38,9 +44,10 @@ export default class Movie extends React.Component {
 
         return (
             <div className='body'>
+                
                 <p>{movie.reviews}</p>
                 <p>{movie.stars}</p>
-                <ReviewForm movie={movie} onReviewSubmit= {this.addNewReview} saveInput={this.saveInput}/>
+                <ReviewForm movie={movie} onReviewSubmit= {this.handleReviewSubmit}/>
             </div>
         )
     }

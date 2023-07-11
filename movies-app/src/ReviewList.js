@@ -3,17 +3,18 @@ import Review from './Review';
 import ReviewForm from './ReviewForm';
 
 export default class ReviewList extends React.Component {
+
     constructor(props) {
         super(props)
 
-        this.movies = props.movies
+        this.movie.reviews = props.movie.reviews
     }
+
     render() {
-        return (
-            <div>
-                <Review reviews={this.props.movies}/>
-                <ReviewForm />
-            </div>
+        const reviews = this.props.reviews
+
+        return(
+            <div></div>
         )
     }
 }
